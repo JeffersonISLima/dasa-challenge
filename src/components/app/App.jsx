@@ -1,37 +1,51 @@
-import React, { Component } from 'react';
-import './app.css';
-import './reset.css'
-import SearchPokemon from '../search-pokemon/SearchPokemon'
-import axios from 'axios';
+import React, { Component } from "react";
+import "./app.css";
+import "./reset.css";
+import SearchPokemon from "../search-pokemon/SearchPokemon";
+import Navbar from "../navbar/Navbar";
+import axios from "axios";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      pokemons: [],     
-    }
+      pokemonsList: [],
+    };
     this.callPokeApi = this.callPokeApi.bind(this);
+    this.searchPokemon = this.searchPokemon.bind(this);
   }
-  
+
   callPokeApi() {
-    axios.get('https://pokeapi.co/api/v2/pokemon')
-    .then( response => {
+    axios.get("https://pokeapi.co/api/v2/pokemon").then(response => {
       this.setState({
-        pokemons: response.data['results']
-       });  
+        pokemonsList: response.data.results
+      });
+    });
+  }
+
+  searchPokemon(searchValue) {   
+    const pokemonSearch = this.state.pokemonsList.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(searchValue.search.toLowerCase())
+    );
+    this.setState({
+      pokemonsList: pokemonSearch,
     });
   }
 
   componentDidMount() {
-    this.callPokeApi();
+    this.callPokeApi();    
   }
-  
+
   render() {
-    return(
-      <section className='app-section'>
-          <SearchPokemon />         
-          <input placeholder='Encontre um pokemon ' type="search" name="" id="search"/>   
-          { this.state.pokemons.map( ( pokemon, idx ) => <p key={idx}> {pokemon.name} {pokemon.url} </p> ) }
+    console.log(this.state.pokemonsList);
+    return (
+      <section className="app-section">
+        {/* <ListPokemon allPokemons={ this.state.pokemons } /> */}
+        <Navbar />
+        <SearchPokemon search={this.searchPokemon} />
+        {this.state.pokemonsList.map((pokemon, idx) => (
+          <p key={idx}> {pokemon.name} </p>
+        ))}
       </section>
     );
   }

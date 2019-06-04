@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 
-class SearchPokemon extends Component {
+class SearchPokemon extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      pokemon: [],
+      search: '',
     }
   }
 
-  render(){
+  inputChange(event) {
+    event.preventDefault();
+    let { name, value } = event.target;
+    this.setState({ [name]: value},
+    () => this.props.search(this.state))
+  }
+
+  render() {
     return(
-      <section>
-        <p>Ola search</p>
-        <form>
-          <i className="fas fa-search"></i>
-          <input type="search" name="search" placeholder="Pesquise um pokemon"    />
-        </form>
-      </section>
+      <form className="search">
+        <input className="input" type="search" placeholder="Quem é esse Pokémon?" name="search" value={this.state.search} onChange={(e) => this.inputChange(e)} />
+      </form>
     )
   }
 }
