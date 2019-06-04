@@ -12,7 +12,7 @@ class App extends Component {
       pokemonsList: [],
     };
     this.callPokeApi = this.callPokeApi.bind(this);
-    this.searchPokemon = this.searchPokemon.bind(this);
+  //  this.searchPokemon = this.searchPokemon.bind(this);
   }
 
   callPokeApi() {
@@ -23,29 +23,25 @@ class App extends Component {
     });
   }
 
-  searchPokemon(searchValue) {   
-    const pokemonSearch = this.state.pokemonsList.filter(pokemon =>
+/*   searchPokemon(searchValue) {  
+    const listPokemon = [...this.state.pokemonsList] 
+    const pokemonSearch = listPokemon.filter(pokemon =>
       pokemon.name.toLowerCase().includes(searchValue.search.toLowerCase())
     );
     this.setState({
       pokemonsList: pokemonSearch,
     });
-  }
+  } */
 
   componentDidMount() {
     this.callPokeApi();    
   }
 
-  render() {
-    console.log(this.state.pokemonsList);
+  render() {    
     return (
-      <section className="app-section">
-        {/* <ListPokemon allPokemons={ this.state.pokemons } /> */}
+      <section className="app-section">       
         <Navbar />
-        <SearchPokemon search={this.searchPokemon} />
-        {this.state.pokemonsList.map((pokemon, idx) => (
-          <p key={idx}> {pokemon.name} </p>
-        ))}
+        <SearchPokemon callPokeApi={this.callPokeApi} pokemonsList={this.state.pokemonsList} /> 
       </section>
     );
   }
