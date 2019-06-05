@@ -1,7 +1,8 @@
 import React from 'react';
+import './navbar.css';
 
 const Navbar = () => {
-  return <h1>Sou a navbar</h1>
+  return <div className="header"><h2>Pokémons #Dasa Challenge</h2></div>
 }
 
 export default Navbar;

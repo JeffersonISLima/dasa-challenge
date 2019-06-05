@@ -1,0 +1,24 @@
+.search-box {
+  display: flex;
+  height: 70px; 
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.search-txt {
+  width: 1000px;  
+  height: 50px; 
+  margin: auto;
+  padding: 10px;
+  padding-left: 30%; 
+  border-radius: 40px;
+  background: #92bffd;
+}
+
+.parent form i {
+  position: absolute;
+  right: 40px;
+  color: #006D4F;
+}
