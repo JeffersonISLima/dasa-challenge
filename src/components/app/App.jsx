@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./app.css";
 import "./reset.css";
 import SearchPokemon from "../search-pokemon/SearchPokemon";
 import Navbar from "../navbar/Navbar";

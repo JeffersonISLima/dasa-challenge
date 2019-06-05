@@ -8,8 +8,8 @@ class SearchPokemon extends Component {
       pokemons: [],
       search: "",
       control: false
-    };
-    this.inputChange = this.inputChange.bind(this);
+    }
+    this.searchHandler = this.searchHandler.bind(this);
     this.updateState = this.updateState.bind(this);
   }
 
@@ -23,42 +23,35 @@ class SearchPokemon extends Component {
     this.props.callPokeApi(this.updateState);
   }
 
-  inputChange(event) {
+   searchHandler(event) {         
     event.preventDefault();
-    const { value } = event.target;
-    const pokemonFind = this.props.pokemonsList.filter(pokemon =>
-      pokemon.name.toLowerCase().includes(value.toLowerCase())
-    );
+    const regex = new RegExp(event.target.value, 'g'); 
+    const pokemonFind = this.props.pokemonsList.filter((pokemon) => {       
+      return pokemon.name.match(regex);
+    }); 
     this.setState({
       pokemons: pokemonFind,
-      control: true
+      control: true,
     });
   }
 
   render() {
     return (
-      <section className="search">
-        <div className="parent">
-          <form className="search-box">
-          <i class="fas fa-search"></i>
-            <input
-              className="search-txt"
-              type="search"
-              placeholder="Quem é esse Pokémon?"
-              name="search"
-              onChange={e => this.inputChange(e)}
-            />
-           
+      <section>
+        <div>
+          <form className="search-box"> 
+          <div>           
+            <input className="search-txt" type="search" placeholder="Quem é esse Pokémon?" name="search" onChange={e => this.searchHandler(e)} /> 
+            &#128269; {/* Ícone Lupa */}
+          </div>
           </form>
         </div>
-          <div>
-            {this.state.control === false
-              ? this.props.pokemonsList.map((pokemon, idx) => (
-                  <p key={idx}> {pokemon.name} </p>
-                ))
-              : this.state.pokemons.map((pokemon, idx) => (
-                  <p key={idx}> {pokemon.name} </p>
-                ))}
+          <div className="parent-pokemon-card">
+            {this.state.control === false ? this.props.pokemonsList.map((pokemon, idx) => (
+              <p className="pokemon-card" key={idx}> {pokemon.name} </p>
+            )) : this.state.pokemons.map((pokemon, idx) => (
+                    <p className="pokemon-card" key={idx}> {pokemon.name} </p>
+                 ))}
           </div>        
       </section>
     );

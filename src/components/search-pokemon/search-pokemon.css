@@ -4,7 +4,7 @@
   justify-content: center;
   margin-top: 20px;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 50px;  
 }
 
 .search-txt {
@@ -12,13 +12,32 @@
   height: 50px; 
   margin: auto;
   padding: 10px;
-  padding-left: 30%; 
+  padding-left: 43%; 
   border-radius: 40px;
   background: #92bffd;
 }
 
-.parent form i {
-  position: absolute;
-  right: 40px;
-  color: #006D4F;
+.parent-pokemon-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
+.pokemon-card {
+  background-color: purple;
+  margin-bottom: 10px;
+  height: 50px;
+  width: 30%;
+  border-radius: 40px;
+  text-align: center;
+  padding-top: 15px;
+  font-size: 20px;
+  color:white;
+}
+
+.pokemon-card:hover {
+  background-color: red;
+  color: #9cff8f;;
+}
+
