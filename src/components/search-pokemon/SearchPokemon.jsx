@@ -25,9 +25,9 @@ class SearchPokemon extends Component {
 
    searchHandler(event) {         
     event.preventDefault();
-    const regex = new RegExp(event.target.value, 'g'); 
-    const pokemonFind = this.props.pokemonsList.filter((pokemon) => {       
-      return pokemon.name.match(regex);
+    const { value } = event.target;    
+    const pokemonFind = this.props.pokemonsList.filter((pokemon) => {    
+      return pokemon.name.toLowerCase().includes(value.toLowerCase());
     }); 
     this.setState({
       pokemons: pokemonFind,
