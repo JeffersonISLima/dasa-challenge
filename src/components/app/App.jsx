@@ -14,11 +14,11 @@ class App extends Component {
   }
 
   callPokeApi() {
-    axios.get("https://pokeapi.co/api/v2/pokemon").then(response => {
+    axios.get( `${process.env.REACT_APP_API_URL}` ).then(response => {
       this.setState({
         pokemonsList: response.data.results,
-      });
-    });
+      })
+    }).catch(error => console.log(error))
   }
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <section className="app-section">       
         <Navbar />
-        <SearchPokemon callPokeApi={this.callPokeApi} pokemonsList={this.state.pokemonsList} /> 
+        <SearchPokemon pokemonsList={this.state.pokemonsList} /> 
       </section>
     );
   }

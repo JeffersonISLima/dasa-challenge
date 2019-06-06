@@ -9,18 +9,7 @@ class SearchPokemon extends Component {
       search: "",
       control: false
     }
-    this.searchHandler = this.searchHandler.bind(this);
-    this.updateState = this.updateState.bind(this);
-  }
-
-  updateState(arrayOfPokemons) {
-    this.setState({
-      pokemons: arrayOfPokemons,
-    });
-  }
-
-  componentDidMount() {
-    this.props.callPokeApi(this.updateState);
+    this.searchHandler = this.searchHandler.bind(this);  
   }
 
    searchHandler(event) {         
