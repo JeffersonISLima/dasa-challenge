@@ -6,7 +6,6 @@ class SearchPokemon extends Component {
     super(props);
     this.state = {
       pokemons: [],
-      search: "",
       control: false
     }
     this.searchHandler = this.searchHandler.bind(this);  
