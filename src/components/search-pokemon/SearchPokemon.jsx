@@ -1,5 +1,6 @@
 import './search-pokemon.css';
 import React, { Component } from "react";
+import FormField from '../form-field/FormField';
 
 class SearchPokemon extends Component {
   constructor(props) {
@@ -34,8 +35,7 @@ class SearchPokemon extends Component {
         <div>
           <form className="search-box">
             <div>
-              <input className="search-txt" type="search" placeholder="Quem é esse Pokémon?" name="search" onChange={e => this.handleChange(e)} />
-              &#128269; {/* Ícone Lupa */}
+              <FormField className="search-txt" type="search" placeholder="Quem é esse Pokémon?" name="search" onChange={this.handleChange} />
             </div>
           </form>
         </div>
