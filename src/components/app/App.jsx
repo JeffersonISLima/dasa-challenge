@@ -1,8 +1,8 @@
-import React, { Component } from "react";
 import "./reset.css";
-import SearchPokemon from "../search-pokemon/SearchPokemon";
-import Navbar from "../navbar/Navbar";
 import axios from "axios";
+import Navbar from "../navbar/Navbar";
+import React, { Component } from "react";
+import SearchPokemon from "../search-pokemon/SearchPokemon";
 
 class App extends Component {
   constructor() {
@@ -10,26 +10,27 @@ class App extends Component {
     this.state = {
       pokemonsList: [],
     };
-    this.callPokeApi = this.callPokeApi.bind(this); 
+    this.callPokeApi = this.callPokeApi.bind(this);
   }
 
   callPokeApi() {
-    axios.get( `${process.env.REACT_APP_API_URL}` ).then(response => {
-      this.setState({
-        pokemonsList: response.data.results,
-      })
-    }).catch(error => console.log(error))
+    axios.get(`${process.env.REACT_APP_API_URL}`)
+      .then(response => {
+        this.setState({
+          pokemonsList: response.data.results,
+        })
+      }).catch(error => console.log(error));
   }
 
   componentDidMount() {
-    this.callPokeApi();    
+    this.callPokeApi();
   }
 
-  render() {    
+  render() {
     return (
-      <section className="app-section">       
+      <section className="app-section">
         <Navbar />
-        <SearchPokemon pokemonsList={this.state.pokemonsList} /> 
+        <SearchPokemon pokemonsList={this.state.pokemonsList} />
       </section>
     );
   }
