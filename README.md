@@ -4,7 +4,7 @@ Teste técnico de front-end desenvolvido em React JS para a Dasa.
 
 ### `Instruções`
 
-Após clonar o repositório, execute no terminal $npm init para baixar as dependências, depois execute $npm start para iniciar o servidor.
+Após clonar o repositório, execute no terminal $npm install para baixar as dependências, depois execute $npm start para iniciar o servidor.
 
 ### `Projeto`
 
